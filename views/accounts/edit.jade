@@ -1,0 +1,23 @@
+ul.nav.nav-tabs
+  li
+    a(href="/dashboard") Dashboard
+  li.active
+    a(href="/account/edit") Edit Account
+
+h1(style="margin-bottom:20px") Edit Account
+
+- if(errors)
+  .alert.alert-block.alert-error
+    h4.alert-heading Validation Errors
+    ul
+      each error in errors.messages
+        li= error
+  
+form.well(action="/account/edit", method="post")
+  input(type="hidden", name="_method", value="put")
+  label Email
+  input(name='account[email]', value=account.email || '')
+  label Password
+  input(name='account[password]', type="password", value=account.password || '')
+  .actions
+    button.btn.btn-primary.btn-large(type="submit") Update Account

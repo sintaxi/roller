@@ -1,0 +1,15 @@
+h1(style="margin-bottom:20px") Log in
+
+form.well(action="/login", method="post")
+  - if(errors)
+    .alert.alert-error
+      each error in errors.messages
+        h4.alert-heading= error
+  input(type='hidden', name='_method', value='put')
+  label Email
+  input(name='account[email]', type="text", value=account.email || '')
+  label Password
+  input(name='account[password]', type="password", value=account.password || '')
+  .actions
+    button.btn.btn-primary.btn-large(type="submit") Log In
+    a(href="/signup", style="margin-left:15px") Need an Account?
